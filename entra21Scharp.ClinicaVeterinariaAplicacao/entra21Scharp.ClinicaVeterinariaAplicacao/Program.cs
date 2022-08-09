@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Repositorio.BancoDados;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ClinicaVeterinariaContexto>(options =>
+options.UseSqlServer(
+  builder.Configuration.GetConnectionString("SqlServer")));
 
 var app = builder.Build();
 
@@ -22,4 +28,10 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.UseEndpoints(endpoint =>
+{
+    endpoint.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 app.Run();
