@@ -1,4 +1,4 @@
-﻿namespace Repositorio.Entidades
+﻿namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades
 {
     public class Raca
     {

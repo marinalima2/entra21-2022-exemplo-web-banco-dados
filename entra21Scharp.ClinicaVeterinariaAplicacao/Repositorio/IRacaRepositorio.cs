@@ -1,4 +1,4 @@
-﻿using Repositorio.Entidades;
+﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 
 namespace Repositorio
 {

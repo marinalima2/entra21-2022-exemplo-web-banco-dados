@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Repositorio.BancoDados;
+using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 
 var builder = WebApplication.CreateBuilder(args);
 

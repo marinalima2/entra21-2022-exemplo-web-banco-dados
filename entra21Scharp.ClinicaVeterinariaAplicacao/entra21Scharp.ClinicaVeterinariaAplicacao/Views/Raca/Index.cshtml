@@ -1,27 +1,39 @@
-﻿<h1>Lista de Raças</h1>
+﻿@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 
-<div>
-    <a href="/raca/cadastrar">Cadastrar</a>
+}
+
+<h1>Lista de Raças</h1>
+
+<div class="row mb-1">
+    <div class="text-end">
+        <a href="/raca/cadastrar" class="btn btn-primary">Cadastrar</a>
+    </div>
+
 </div>
 
-<table>
-    <thead> <!-- Cabeçalho da tabela-->
-        <tr> <!-- Linha da tabela-->
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <!-- Cabeçalho da tabela-->
+        <tr>
+            <!-- Linha da tabela-->
             <th>Código</th> <!-- Coluna específica do cabeçalho-->
             <th>Nome</th>
             <th>Espécie</th>
         </tr>
     </thead>
-    <tbody> <!-- Lugar dos registros da tabela-->
-        <tr> <!-- Linha-->
-            <td>1</td> <!-- Coluna específica para body-->
-            <td>Pinscher</td>
-            <td>Cachorro</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Frajola</td>
-            <td>Gato</td>
-        </tr>
+    <tbody>
+        <!-- Lugar dos registros da tabela-->
+        @foreach (var raca in ViewBag.Racas)
+        {
+            <tr>
+                <!-- Linha-->
+                <td>@raca.Id</td> <!-- Coluna específica para body-->
+                <td>@raca.Nome</td>
+                <td>@raca.Especie</td>
+            </tr>
+        }
+
     </tbody>
 </table>

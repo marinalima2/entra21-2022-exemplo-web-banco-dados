@@ -1,6 +1,6 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Servico;
 using Microsoft.AspNetCore.Mvc;
-using Repositorio.BancoDados;
+using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 
 namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
 {
@@ -21,6 +21,10 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
 
         public IActionResult ObterTodos()
         {
+            var racas = racaServico.ObterTodos();
+
+            ViewBag.Racas = racas;
+
             return View("Index");
         }
 
@@ -29,6 +33,7 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
         public IActionResult Cadastrar()
         {
             return View();
+
         }
 
         [Route("/raca/registrar")]

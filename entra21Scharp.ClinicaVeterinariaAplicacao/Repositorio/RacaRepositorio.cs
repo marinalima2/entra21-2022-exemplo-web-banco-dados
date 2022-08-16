@@ -1,5 +1,5 @@
-﻿using Repositorio.BancoDados;
-using Repositorio.Entidades;
+﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
+using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 
 namespace Repositorio
 {
@@ -11,12 +11,45 @@ namespace Repositorio
         {
             _contexto = contexto;
         }
+
+        public void Apagar(int id) 
+        { 
+            var raca = _contexto.Racas.Where(x => x.Id == id).FirstOrDefault();
+
+            _contexto.Racas.Remove(raca);
+        }
+
+        public void Atualizar(Raca racaParaAlterar) 
+        {
+            var raca = _contexto.Racas
+                .Where(x => x.Id == racaParaAlterar.Id).FirstOrDefault();
+
+            raca.Nome = racaParaAlterar.Nome;
+            raca.Especie = racaParaAlterar.Especie;
+
+            _contexto.Update(raca);
+        }
         public void Cadastrar(Raca raca)
         {
             //Insert na tabela de raças 
             _contexto.Racas.Add(raca);
             _contexto.SaveChanges();
             
+        }
+
+        public Raca ObterPorId(int id) 
+        {
+            var raca = _contexto.Racas.Where(_contexto => _contexto.Id == id).FirstOrDefault(); 
+
+            return raca;
+        
+        }
+
+        public List<Raca> ObterTodos() 
+        {
+            var racas = _contexto.Racas.ToList();
+
+            return racas;
         }
     }
 }

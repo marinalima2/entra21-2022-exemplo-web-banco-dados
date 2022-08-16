@@ -1,18 +1,29 @@
-﻿<h3>Cadastro de Raça</h3>
+﻿
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+
+<h3>Cadastro de Raça</h3>
+
 
 <form action="registrar" method="get">
     <div>
-        <label for="campo_nome">Nome:</label>
-        <input type="text" id="campo_nome" name="nome" />
+        <label for="campo_nome" class="form-label">
+            Nome<span class="text-danger fw-bold">*</span></label>
+        <input type="text" id="campo_nome" name="nome" class="form-control" required="required"/>
     </div>
-    <div>
-        <label for="campo_especial">Espécie:</label>
-        <select id="campo_especie" name="especie">
+    <div class="mb-3">
+        <label for="campo_especial" class="form-label">
+            Espécie<span class="text-danger fw-bold">*</span></label>
+        <select id="campo_especie" name="especie" class="form-select" required="required">
+            <option selected="selected" disabled="disabled" value="">Selecione uma opção</option>
             <option value="Cachorro">Cachorro</option>
             <option value="Gato">Gato</option>
         </select>
     </div>
-    <div>
-        <button type="submit">Salvar</button>
+    <div class="text-end">
+        <a href="/raca" class="btn btn-outline-danger">Cancelar</a>
+        <button type="submit" class="btn btn-success">Salvar</button>
     </div>
 </form>
