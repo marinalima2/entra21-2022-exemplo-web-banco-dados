@@ -12,7 +12,6 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados
             : base(options)
         {
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
