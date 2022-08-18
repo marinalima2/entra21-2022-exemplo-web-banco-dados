@@ -3,6 +3,7 @@ using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
 using Repositorio;
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.viewModels;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico
 {
@@ -11,20 +12,20 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico
 
     public class RacaServico : IRacaServico
     {
-        private readonly RacaRepositorio _racaRepositorio;
+        private readonly IRacaRepositorio _racaRepositorio;
 
         public RacaServico(ClinicaVeterinariaContexto contexto)
         {
             _racaRepositorio = new RacaRepositorio(contexto);
         }
-        public void Alterar(int id, string nome, string especie)
+        public void Editar(RacaEditarViewModel racaEditarViewModel)
         {
             var raca = new Raca();
-            raca.Id = id;
-            raca.Nome = nome.Trim();
-            raca.Especie = especie;
+            raca.Id = racaEditarViewModel.id;
+            raca.Nome = racaEditarViewModel.Nome.Trim();
+            raca.Especie = racaEditarViewModel.Especie;
 
-            _racaRepositorio.Atualizar(raca);
+            _racaRepositorio.Editar(raca);
         }
 
         public void Apagar(int id)
@@ -32,15 +33,13 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico
             _racaRepositorio.Apagar(id);
         }
 
-        public void Cadastrar(string nome, string especie)
+        public void Cadastrar(RacaCadastrarViewModel racaCadastrarViewModel)
         {
             var raca = new Raca();
-            raca.Nome = nome;
-            raca.Especie = especie;
+            raca.Nome = racaCadastrarViewModel.Nome;
+            raca.Especie = racaCadastrarViewModel.Especie;
 
             _racaRepositorio.Cadastrar(raca);
-
-            Console.WriteLine($"Nome: {nome} Espécie: {especie}");
         }
 
         public Raca ObterPorId(int id)

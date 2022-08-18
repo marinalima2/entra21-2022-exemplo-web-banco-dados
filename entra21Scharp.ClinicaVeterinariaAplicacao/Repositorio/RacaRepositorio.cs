@@ -20,7 +20,7 @@ namespace Repositorio
             _contexto.SaveChanges();
         }
 
-        public void Atualizar(Raca racaParaAlterar)
+        public void Editar(Raca racaParaAlterar)
         {
             var raca = _contexto.Racas
                 .Where(x => x.Id == racaParaAlterar.Id).FirstOrDefault();

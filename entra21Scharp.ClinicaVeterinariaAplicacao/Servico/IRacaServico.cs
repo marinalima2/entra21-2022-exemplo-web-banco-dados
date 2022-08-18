@@ -1,12 +1,13 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.viewModels;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico
 {
-    internal interface IRacaServico
+    public interface IRacaServico
     {
-        void Cadastrar(string nome, string especie);
+        void Cadastrar(RacaCadastrarViewModel racaCadastrarViewModel);
         List<Raca> ObterTodos();
-        void Alterar(int id, string nome, string especie);
+        void Editar(RacaEditarViewModel racaEditarViewModel);
         void Apagar(int id);
         Raca ObterPorId(int id);
 

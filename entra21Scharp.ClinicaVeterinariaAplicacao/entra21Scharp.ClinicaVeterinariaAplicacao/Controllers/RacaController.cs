@@ -1,5 +1,6 @@
 ﻿using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 using Entra21.CSharp.ClinicaVeterinaria.Servico;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.viewModels;
 using Microsoft.AspNetCore.Mvc;
 using Repositorio.Enums;
 
@@ -7,7 +8,7 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
 {
     public class RacaController : Controller
     {
-        private readonly RacaServico _racaServico;
+        private readonly IRacaServico _racaServico;
 
 
         //Construtor: Objetivo construir o objeto de RacaController,
@@ -29,8 +30,7 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
             return View("Index");
         }
 
-        [Route("/raca/cadastrar")]
-        [HttpGet]
+        [HttpGet("/raca/cadastrar")]
         public IActionResult Cadastrar()
         {
             var especies = ObterEspecies();
@@ -41,14 +41,13 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
 
         }
 
-        [Route("/raca/registrar")]
-        [HttpPost]
-        public IActionResult Registrar(
+        [HttpPost("/raca/cadastrar")]
+        public IActionResult Cadastrar(
 
-            [FromForm] string nome,
-            [FromForm] string especie)
+            [FromForm] RacaCadastrarViewModel racaCadastrarViewModel)
         {
-            _racaServico.Cadastrar(nome, especie);
+            
+            _racaServico.Cadastrar(racaCadastrarViewModel);
 
             return RedirectToAction("Index");
         }
@@ -63,8 +62,7 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
         }
 
 
-        [HttpGet]
-        [Route("/raca/editar")]
+        [HttpGet("/raca/editar")]
 
         public IActionResult Editar([FromQuery] int id)
         {
@@ -77,15 +75,12 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
             return View("Editar");
         }
 
-        [HttpPost]
-        [Route("/raca/alterar")]
+        [HttpPost("/raca/editar")]
 
-        public IActionResult Alterar(
-            [FromForm] int id,
-            [FromForm] string nome,
-            [FromForm] string especie)
+        public IActionResult Editar(
+            [FromForm] RacaEditarViewModel racaEditarViewModel)
         {
-            _racaServico.Alterar(id, nome, especie);
+            _racaServico.Editar(racaEditarViewModel);
 
             return RedirectToAction("Index");
         }
