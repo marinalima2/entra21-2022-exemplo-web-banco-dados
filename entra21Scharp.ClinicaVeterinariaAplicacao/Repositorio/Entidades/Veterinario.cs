@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Repositorio.Entidades
 {
-    public class Veterinario
+    public class Veterinario : EntidadeBase
     {
-        public int Id { get; set; }
         public string Nome { get; set; }    
         public string Crmv { get; set; }    
         public  int Idade { get; set; }
