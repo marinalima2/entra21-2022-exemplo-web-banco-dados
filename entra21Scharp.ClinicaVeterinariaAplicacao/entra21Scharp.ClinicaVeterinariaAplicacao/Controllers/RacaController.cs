@@ -68,7 +68,7 @@ namespace entra21Scharp.ClinicaVeterinariaAplicacao.Controllers
             var especies = ObterEspecies();
             var racaEditarNewModel = new RacaEditarViewModel
             {
-                id = raca.Id,
+                Id = raca.Id,
                 Nome = raca.Nome,
                 Especie = raca.Especie
             };

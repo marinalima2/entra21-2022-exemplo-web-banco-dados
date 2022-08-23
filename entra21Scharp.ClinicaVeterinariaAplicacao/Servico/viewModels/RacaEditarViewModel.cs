@@ -8,7 +8,7 @@ namespace Entra21.CSharp.ClinicaVeterinaria.Servico.viewModels
 {
     public class RacaEditarViewModel : RacaViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
     }
 }
