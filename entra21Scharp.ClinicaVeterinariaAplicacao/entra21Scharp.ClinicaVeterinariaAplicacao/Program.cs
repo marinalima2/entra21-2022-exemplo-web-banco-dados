@@ -1,5 +1,6 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
 using Entra21.CSharp.ClinicaVeterinaria.Servico;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades;
 using Microsoft.EntityFrameworkCore;
 using Repositorio;
 
@@ -12,6 +13,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IRacaRepositorio, RacaRepositorio>();
 builder.Services.AddScoped<IRacaServico, RacaServico>();
 builder.Services.AddScoped<IVeterinarioServico, VeterinarioServico>();
+builder.Services.AddScoped<IVeterinarioMapeamentoEntidade,
+    VeterinarioMapeamentoEntidade>();
 
 builder.Services.AddDbContext<ClinicaVeterinariaContexto>(options =>
 options.UseSqlServer(

@@ -7,6 +7,8 @@
         public  int? Idade { get; set; }
         public decimal? Salario { get; set; }
         public bool Empregado { get; set; }
+
+
     
     }
 }

@@ -1,18 +1,33 @@
-﻿using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Veterinarios;
+﻿using Entra21.CSharp.ClinicaVeterinaria.Servico.MapeamentoEntidades;
+using Entra21.CSharp.ClinicaVeterinaria.Servico.ViewModels.Veterinarios;
 using Repositorio.Entidades;
+using Repositorio.Repositorios;
 
 namespace Entra21.CSharp.ClinicaVeterinaria.Servico
 {
     public class VeterinarioServico : IVeterinarioServico
     {
-        public Veterinario Cadastrar(VeterinarioCadastrarViewModel viewModel)
+        private readonly IVeterinarioRepositorio _veterinarioRepositorio;
+        private readonly IVeterinarioMapeamentoEntidade _mapeamento;
+
+        public VeterinarioServico(
+            IVeterinarioRepositorio veterinarioRepositorio,
+            IVeterinarioMapeamentoEntidade mapeamento)
         {
-            throw new NotImplementedException();
+            _veterinarioRepositorio = veterinarioRepositorio;
+            _mapeamento = mapeamento;
         }
 
-        public IList<Veterinario> ObterTodos(string pesquisa)
+        public Veterinario Cadastrar(VeterinarioCadastrarViewModel viewModel)
         {
-            throw new NotImplementedException();
+            var veterinario = _mapeamento.ConstruirCom(viewModel);
+
+            _veterinarioRepositorio.Cadastrar(veterinario);
+
+            return veterinario;        
         }
+
+        public IList<Veterinario> ObterTodos(string pesquisa) =>
+            _veterinarioRepositorio.ObterTodos(pesquisa);
     }
 }
