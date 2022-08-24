@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Repositorio
 {
-    internal class Mapeamento : IEntityTypeConfiguration<Raca>
+    internal class RacaMapeamento : IEntityTypeConfiguration<Raca>
     {
         public void Configure(EntityTypeBuilder<Raca> builder)
         {

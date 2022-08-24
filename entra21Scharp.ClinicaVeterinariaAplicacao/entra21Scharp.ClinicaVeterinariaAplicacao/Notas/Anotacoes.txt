@@ -1,3 +1,4 @@
 ﻿Migration = Versionamento
 
-dotnet ef migrations add AdicionarRacaTabela --project Repositorio --startup-project entra21Scharp.ClinicaVeterinariaAplicacao
+dotnet ef migrations add AdicionarRacaTabela --project Repositorio --startup-project entra21Scharp.ClinicaVeterinariaAplicacao 
+

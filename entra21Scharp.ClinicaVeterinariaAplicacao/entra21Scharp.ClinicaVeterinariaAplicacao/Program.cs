@@ -1,10 +1,18 @@
 using Entra21.CSharp.ClinicaVeterinaria.Repositorio.BancoDados;
+using Entra21.CSharp.ClinicaVeterinaria.Servico;
 using Microsoft.EntityFrameworkCore;
+using Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//Registrar todas as injeções de dependencia
+builder.Services.AddScoped<IRacaRepositorio, RacaRepositorio>();
+builder.Services.AddScoped<IRacaServico, RacaServico>();
+builder.Services.AddScoped<IVeterinarioServico, VeterinarioServico>();
+
 builder.Services.AddDbContext<ClinicaVeterinariaContexto>(options =>
 options.UseSqlServer(
   builder.Configuration.GetConnectionString("SqlServer")));

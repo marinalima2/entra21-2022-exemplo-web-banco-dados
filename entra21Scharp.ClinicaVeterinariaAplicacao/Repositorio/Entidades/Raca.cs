@@ -1,4 +1,6 @@
-﻿namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades
+﻿using Repositorio.Entidades;
+
+namespace Entra21.CSharp.ClinicaVeterinaria.Repositorio.Entidades
 {
     //Entidades: são representações das tabelas para classes de objetos 
     public class Raca : EntidadeBase
